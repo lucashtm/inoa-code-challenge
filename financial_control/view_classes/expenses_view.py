@@ -8,13 +8,18 @@ from financial_control.models import Category
 class ExpensesView:
   def index(request):
     if request.user.is_authenticated:
-      return render(request, 'financial_control/expenses/index.html', {})
+      expenses = request.user.expense_set.all()
+      context = {
+        'expenses': list(expenses)
+      }
+      return render(request, 'financial_control/expenses/index.html', context)
     else:
       return redirect('sessions_new')
 
   def create(request):
     if request.user.is_authenticated:
-      expense = Expense(description=request.POST['description'], created_at=timezone.now() ,category_id=request.POST['category_id'], user_id=request.user.id)
+      category = Category.objects.get(id=request.POST['category_id'])
+      expense = Expense(description=request.POST['description'], created_at=timezone.now() ,category=category, user=request.user, value=request.POST['value'])
       expense.save()
       return redirect('expenses_index')
     return redirect('sessions_new')

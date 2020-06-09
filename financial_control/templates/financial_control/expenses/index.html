@@ -2,8 +2,14 @@
 
 {% block content %}
   <h2>Your Expenses</h2>
-  <ul>
-    You have no expenses yet
-  </ul>
+  {% if expenses %}
+    <ul>
+      {% for expense in expenses %}
+        <li>{{ expense.description }}</li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p>You have no expenses yet</p>
+  {% endif %}
   <a href="{% url 'expenses_new' %}">Register Expense</a>
 {% endblock %}
