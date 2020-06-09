@@ -13,6 +13,6 @@ class Category(models.Model):
 class Expense(models.Model):
     description = models.CharField(max_length=200)
     created_at = models.DateTimeField('date created')
-    category_id = models.ForeignKey(Category, on_delete=models.CASCADE)
-    user_id = models.ForeignKey(User, on_delete=models.CASCADE)
+    category = models.ForeignKey(Category, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     value = models.DecimalField(max_digits=20, decimal_places=10)
