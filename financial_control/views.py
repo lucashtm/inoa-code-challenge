@@ -1,6 +1,4 @@
-from django.shortcuts import redirect, render
 from django.template import loader
-from django.contrib.auth import authenticate, login
 from django.http import HttpResponse
 
 from .view_classes.sessions_view import SessionsView
@@ -12,8 +10,7 @@ def root(request):
   return HttpResponse(template.render({}, request))
 
 def new_session(request):
-  template = loader.get_template('financial_control/signin.html')
-  return HttpResponse(template.render({}, request))
+  return SessionsView.new(request)
 
 def create_session(request):
   return SessionsView.create(request)
