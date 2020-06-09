@@ -5,10 +5,12 @@ from django.utils import timezone
 from financial_control.models import Expense
 from financial_control.models import Category
 
+from ..services.expenses_query import ExpensesQuery
+
 class ExpensesView:
   def index(request):
     if request.user.is_authenticated:
-      expenses = request.user.expense_set.all()
+      expenses = ExpensesQuery(request.user, month=timezone.now().month).fetch()
       context = {
         'expenses': list(expenses)
       }
