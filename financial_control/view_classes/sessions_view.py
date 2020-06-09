@@ -16,4 +16,4 @@ class SessionsView:
       login(request, user)
       return redirect('expenses_index')
     else:
-      return redirect('signin')
+      return redirect('sessions_new')
