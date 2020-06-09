@@ -1,0 +1,10 @@
+{% extends 'financial_control/base.html' %}
+
+{% block content %}
+  <h2>New Expense</h2>
+  <form action="{% url 'expenses_create' %}" method="POST">
+    <input type="text" name="description" id="description">
+    <input type="number" name="value" id="value" step="0.01">
+    <button type="submit">Register</button>
+  </form>
+{% endblock %}

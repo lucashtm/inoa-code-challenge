@@ -9,11 +9,17 @@ def root(request):
   template = loader.get_template('financial_control/root.html')
   return HttpResponse(template.render({}, request))
 
-def new_session(request):
+def sessions_new(request):
   return SessionsView.new(request)
 
-def create_session(request):
+def sessions_create(request):
   return SessionsView.create(request)
 
 def expenses_index(request):
   return ExpensesView.index(request)
+
+def expenses_new(request):
+  return ExpensesView.new(request)
+
+def expenses_create(request):
+  return ExpensesView.create(request)
