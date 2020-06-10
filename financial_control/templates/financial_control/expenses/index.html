@@ -1,15 +1,37 @@
 {% extends 'financial_control/base.html' %}
 
 {% block content %}
-  <h2>Your Expenses</h2>
+  <div class="topbar">
+    <h2>Your Expenses</h2>
+    <a href="{% url 'expenses_new' %}" class="btn btn-primary">
+      <i data-feather="plus"></i>
+      Register Expense
+    </a>
+  </div>
+  <a href="{% url 'expenses_index' %}?periodicity=year" class="btn btn-outline-primary">Year</a>
+  <a href="{% url 'expenses_index' %}?periodicity=month" class="btn btn-outline-primary">Month</a>
   {% if expenses %}
-    <ul>
-      {% for expense in expenses %}
-        <li>{{ expense.description }}</li>
-      {% endfor %}
-    </ul>
+    {% for month in months %}
+      <h3 class="month-title">{{ month }}</h3>
+      <table class="table table-sm table-striped table-hover">
+        <thead>
+          <th scope="col">Description</th>
+          <th scope="col">Category</th>
+          <th scope="col">Value</th>
+        </thead>
+        <tbody>
+          {% for expense in expenses|get_key:month %}
+            <tr>
+              <td>{{ expense.description }}</td>
+              <td>R$ {{ expense.value | floatformat:2 }}</td>
+              <td>{{ expense.category }}</td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    {% endfor %}
   {% else %}
     <p>You have no expenses yet</p>
   {% endif %}
-  <a href="{% url 'expenses_new' %}">Register Expense</a>
+
 {% endblock %}

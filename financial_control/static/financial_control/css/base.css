@@ -1,0 +1,30 @@
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 8px;
+  margin: 8px 0;
+  border-bottom: 1px solid #ccc;
+}
+
+.content {
+  margin: 0 300px;
+}
+
+.topbar {
+  display: flex;
+  align-items: center;
+  margin: 24px 0;
+}
+
+.topbar a {
+  margin-left: 24px;
+}
+
+.month-title {
+  margin-top: 24px;
+}
+
+td {
+  width: 33%;
+}

@@ -10,9 +10,11 @@ from ..services.expenses_query import ExpensesQuery
 class ExpensesView:
   def index(request):
     if request.user.is_authenticated:
-      expenses = ExpensesQuery(request.user, month=timezone.now().month).fetch()
+      periodicity = request.GET.get('periodicity') or 'month'
+      expenses = ExpensesQuery(request.user, periodicity=periodicity).fetch()
       context = {
-        'expenses': list(expenses)
+        'months': expenses.keys(),
+        'expenses': expenses
       }
       return render(request, 'financial_control/expenses/index.html', context)
     else:
