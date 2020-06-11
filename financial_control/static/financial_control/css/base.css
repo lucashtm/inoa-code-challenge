@@ -7,10 +7,6 @@ header {
   border-bottom: 1px solid #ccc;
 }
 
-.content {
-  margin: 0 300px;
-}
-
 .topbar {
   display: flex;
   align-items: center;
@@ -19,6 +15,24 @@ header {
 
 .topbar a {
   margin-left: 24px;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0;
+}
+
+.expenses-container {
+  margin: 0 300px;
+}
+
+.expense-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0;
 }
 
 .month-title {
