@@ -14,7 +14,9 @@
     <a href="{% url 'expenses_index' %}?periodicity=month" class="btn btn-outline-primary">Month</a>
     {% if expenses %}
     {% for month in months %}
-    <h3 class="month-title">{{ month }}</h3>
+    <a href="{% url 'insights_index' %}?month={{ month | lower }}">
+      <h3 class="month-title">{{ month }}</h3>
+    </a>
     <table class="table table-sm table-striped table-hover">
       <thead>
         <th scope="col">Description</th>

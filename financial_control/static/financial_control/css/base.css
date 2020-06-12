@@ -1,3 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+
+body {
+  font-family: 'Open Sans', sans-serif;
+  background-color: #efefef;
+}
+
 header {
   display: flex;
   justify-content: space-between;
@@ -41,4 +48,34 @@ header {
 
 td {
   width: 33%;
+}
+
+.insights-container {
+  display: flex;
+  justify-content: space-around;
+  margin: 100px 300px;
+  font-size: 20px;
+}
+
+.insights-total {
+  font-size: 36px;
+  margin-left: 10px;
+  font-weight: bold;
+}
+
+.insights-greatest-expenses {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 400px;
+  margin-top: 20px;
+}
+
+.insights-greatest-expenses table {
+  margin-top: 20px;
+}
+
+.insights-greatest-expenses table > tbody > tr:first-child {
+  font-size: 24px;
+  font-weight: bold;
 }

@@ -1,11 +1,9 @@
 from django.contrib.auth import authenticate, login
-from django.shortcuts import redirect
+from django.shortcuts import redirect, render
 from django.template import loader
-from django.http import HttpResponse
 
 def sessions_new(request):
-  template = loader.get_template('financial_control/signin.html')
-  return HttpResponse(template.render({}, request))
+  return render(request, 'financial_control/signin.html', {})
 
 def sessions_create(request):
   username = request.POST['username']

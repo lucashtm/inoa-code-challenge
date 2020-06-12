@@ -17,8 +17,7 @@ def expenses_index(request):
       'expenses': expenses
     }
     return render(request, 'financial_control/expenses/index.html', context)
-  else:
-    return redirect('sessions_new')
+  return redirect('sessions_new')
 
 def expenses_new(request):
   if request.user.is_authenticated:
