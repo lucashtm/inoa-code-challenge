@@ -19,8 +19,12 @@
   </div>
   <script>
     let ctx = document.getElementById('expenses-chart');
+    let month = '{{ month }}';
     $.ajax({
       url: '/user/insights/expenses',
+      data: {
+        'month': month
+      },
       dataType: 'json',
       success: data => {
         let chart = new Chart(ctx, {
@@ -28,7 +32,7 @@
           data: {
             labels: data.labels,
             datasets: [{
-              label: 'Expenses per day',
+              label: 'Daily expenses',
               data: data.datasets[0].data,
               backgroundColor: 'rgba(54, 162, 235, 0.2)'
             }]

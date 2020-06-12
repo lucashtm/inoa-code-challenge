@@ -42,8 +42,23 @@ header {
   margin: 0;
 }
 
-.month-title {
+.expenses-month-link {
+  color: black;
+  display: flex;
+  align-items: center;
   margin-top: 24px;
+}
+
+.expenses-month-link span {
+  font-style: italic;
+}
+
+.month-title {
+  margin-right: 20px;
+}
+
+.expenses-delete svg {
+  color: #dc3545;
 }
 
 td {

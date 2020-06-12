@@ -1,5 +1,5 @@
 from django.template import loader
-from django.shortcuts import redirect, render
+from django.shortcuts import get_object_or_404, redirect, render
 from django.utils import timezone
 
 from financial_control.models import Expense
@@ -36,3 +36,10 @@ def expenses_create(request):
     expense.save()
     return redirect('expenses_index')
   return redirect('sessions_new')
+
+def expenses_delete(request, expense_id):
+  if request.user.is_authenticated:
+    expense = get_object_or_404(Expense, pk=expense_id)
+    if expense.user == request.user:
+      expense.delete()
+  return redirect('expenses_index')

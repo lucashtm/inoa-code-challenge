@@ -1,4 +1,4 @@
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 from django.shortcuts import redirect, render
 from django.template import loader
 
@@ -14,3 +14,7 @@ def sessions_create(request):
     return redirect('expenses_index')
   else:
     return redirect('sessions_new')
+
+def sessions_delete(request):
+    logout(request)
+    return redirect('root')

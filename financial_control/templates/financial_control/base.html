@@ -16,7 +16,7 @@
     <header>
       <h1>Financial Control</h1>
       {% if user_logged_in %}
-        <a href="" class="btn btn-secondary sign-out">Sign Out</a>
+        <a href="{% url 'sessions_delete' %}" class="btn btn-secondary sign-out">Sign Out</a>
       {% endif %}
     </header>
 

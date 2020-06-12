@@ -14,14 +14,16 @@
     <a href="{% url 'expenses_index' %}?periodicity=month" class="btn btn-outline-primary">Month</a>
     {% if expenses %}
     {% for month in months %}
-    <a href="{% url 'insights_index' %}?month={{ month | lower }}">
+    <a class="expenses-month-link" href="{% url 'insights_index' %}?month={{ month | lower }}">
       <h3 class="month-title">{{ month }}</h3>
+      <span>Click for insights</span>
     </a>
     <table class="table table-sm table-striped table-hover">
       <thead>
         <th scope="col">Description</th>
         <th scope="col">Category</th>
         <th scope="col">Value</th>
+        <th scope="col"></th>
       </thead>
       <tbody>
         {% for expense in expenses|get_key:month %}
@@ -29,6 +31,11 @@
           <td>{{ expense.description }}</td>
           <td>$ {{ expense.value | floatformat:2 }}</td>
           <td>{{ expense.category }}</td>
+          <td>
+            <a class="expenses-delete" href="{% url 'expenses_delete' expense.id %}" onclick="return confirm('Are you sure?')">
+              <i data-feather="trash-2"></i>
+            </a>
+          </td>
         </tr>
         {% endfor %}
       </tbody>
