@@ -2,17 +2,50 @@
 
 {% block content %}
 <div class="insights-container">
-  <p>Your total spend for {{ month }} is: <span class="insights-total">$ {{ total | floatformat:2 }}</span></p>
-  <div class="insights-greatest-expenses">
-    <span class="title">Top 5 greatest expenses of {{ month }}</span>
-    <table class="table table-sm table-striped table-hover">
-      {% for expense in greatest_expenses %}
-        <tr>
-          <td>{{ expense.description }}</td>
-          <td>$ {{ expense.value | floatformat:2 }}</td>
-        </tr>
-      {% endfor %}
-    </table>
+  <p class="insights-total-text">Your total spend for {{ month }} is: <span class="insights-total">$ {{ total | floatformat:2 }}</span></p>
+  <div class="insights-bottom-container">
+    <canvas id="expenses-chart"></canvas>
+    <div class="insights-greatest-expenses">
+      <span class="title">Top 5 greatest expenses of {{ month }}</span>
+      <table class="table table-sm table-striped table-hover">
+        {% for expense in greatest_expenses %}
+          <tr>
+            <td>{{ expense.description }}</td>
+            <td>$ {{ expense.value | floatformat:2 }}</td>
+          </tr>
+        {% endfor %}
+      </table>
+    </div>
   </div>
+  <script>
+    let ctx = document.getElementById('expenses-chart');
+    $.ajax({
+      url: '/user/insights/expenses',
+      dataType: 'json',
+      success: data => {
+        let chart = new Chart(ctx, {
+          type: 'bar',
+          data: {
+            labels: data.labels,
+            datasets: [{
+              label: 'Expenses per day',
+              data: data.datasets[0].data,
+              backgroundColor: 'rgba(54, 162, 235, 0.2)'
+            }]
+          },
+          options: {
+            responsive: true,
+            scales: {
+              yAxes: [{
+                ticks: {
+                  beginAtZero: true
+                }
+              }]
+            }
+          }
+        });
+      }
+    });
+  </script>
 </div>
 {% endblock %}

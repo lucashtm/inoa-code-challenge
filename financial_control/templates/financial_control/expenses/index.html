@@ -27,7 +27,7 @@
         {% for expense in expenses|get_key:month %}
         <tr>
           <td>{{ expense.description }}</td>
-          <td>R$ {{ expense.value | floatformat:2 }}</td>
+          <td>$ {{ expense.value | floatformat:2 }}</td>
           <td>{{ expense.category }}</td>
         </tr>
         {% endfor %}

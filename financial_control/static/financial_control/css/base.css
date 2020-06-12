@@ -2,7 +2,7 @@
 
 body {
   font-family: 'Open Sans', sans-serif;
-  background-color: #efefef;
+  background-color: #f7f7f7;
 }
 
 header {
@@ -52,9 +52,24 @@ td {
 
 .insights-container {
   display: flex;
-  justify-content: space-around;
+  flex-direction: column;
   margin: 100px 300px;
   font-size: 20px;
+}
+
+.insights-bottom-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.insights-bottom-container canvas {
+  max-width: 700px;
+}
+
+.insights-total-text {
+  text-align: center;
 }
 
 .insights-total {
@@ -68,7 +83,6 @@ td {
   flex-direction: column;
   align-items: center;
   width: 400px;
-  margin-top: 20px;
 }
 
 .insights-greatest-expenses table {
