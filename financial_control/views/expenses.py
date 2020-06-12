@@ -32,7 +32,11 @@ def expenses_new(request):
 def expenses_create(request):
   if request.user.is_authenticated:
     category = Category.objects.get(id=request.POST['category_id'])
-    expense = Expense(description=request.POST['description'], created_at=timezone.now() ,category=category, user=request.user, value=request.POST['value'])
+    expense = Expense(description=request.POST['description'],
+      category=category,
+      user=request.user,
+      value=request.POST['value'],
+      created_at=request.POST['created_at'] or timezone.now())
     expense.save()
     return redirect('expenses_index')
   return redirect('sessions_new')
