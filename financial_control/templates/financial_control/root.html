@@ -1,6 +1,8 @@
 {% extends 'financial_control/base.html' %}
 
 {% block content %}
-<p>Get track of your expenses and finally tame your financial life</p>
-<a href="{% url 'expenses_index' %}">Get Started!</a>
+<div class="root-container">
+  <p>Get track of your expenses</p>
+  <a href="{% url 'expenses_index' %}">Sign In!</a>
+</div>
 {% endblock %}
