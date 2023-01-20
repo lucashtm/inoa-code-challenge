@@ -66,7 +66,7 @@ macholib==1.14
 Markdown==3.1.1
 matplotlib==3.1.2
 mccabe==0.6.1
-mechanize==0.4.5
+mechanize==0.4.6
 msgpack==0.6.2
 mugshot==0.4.2
 netifaces==0.10.4
